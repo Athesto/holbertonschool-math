@@ -1,4 +1,6 @@
 #include "holberton.h"
+#include "stdlib.h"
+#include "unistd.h"
 /**
  * display_complex_number - displays the complex numbers,
  * followed by a new line.
@@ -6,16 +8,26 @@
  */
 void display_complex_number(complex c)
 {
+	char *buffer;
+	double abs = c.im > 0 ? c.im : -1 * c.im;
+	char sign = c.im >= 0 ? '+' : '-';
+	size_t len;
 
-	if (c.re < 0)
-		printf("- %g", -1 * c.re);
-	else
-		printf("%g", c.re);
+	buffer = malloc(1024);
+	if (!buffer)
+		return;
 
-	if (c.im < 0)
-		printf(" - %gi", -1 * c.im);
-	else if (c.im > 0)
-		printf(" + %gi", c.im);
+	len = sprintf(buffer, "%g", c.re);
 
-	puts("");
+	if (c.im != 0)
+	{
+		len += sprintf(buffer + len, " %c ", sign);
+		if (abs != 1)
+			len += sprintf(buffer + len, "%g", abs);
+		len += sprintf(buffer + len, "i");
+	}
+
+	puts(buffer);
+	free(buffer);
 }
+
