@@ -7,7 +7,11 @@
 void display_complex_number(complex c)
 {
 
-	printf("%g", c.re);
+	if (c.re < 0)
+		printf("- %g", -1 * c.re);
+	else
+		printf("%g", c.re);
+
 	if (c.im < 0)
 		printf(" - %gi", -1 * c.im);
 	else if (c.im > 0)
