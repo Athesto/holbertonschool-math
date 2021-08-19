@@ -8,14 +8,10 @@
  */
 void display_complex_number(complex c)
 {
-	char *buffer;
+	char buffer[1024];
 	double abs = c.im > 0 ? c.im : -1 * c.im;
 	char sign = c.im >= 0 ? '+' : '-';
 	size_t len;
-
-	buffer = malloc(1024);
-	if (!buffer)
-		return;
 
 	len = sprintf(buffer, "%g", c.re);
 
@@ -28,6 +24,5 @@ void display_complex_number(complex c)
 	}
 
 	puts(buffer);
-	free(buffer);
 }
 
