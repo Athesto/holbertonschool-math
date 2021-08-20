@@ -2,6 +2,7 @@
 #define _HOLBERTON_H_
 
 #include <stdio.h>
+#define ABS(x) ((x) >= 0 ? (x) : -1 * (x))
 
 /**
  * struct complex_s - complex type
