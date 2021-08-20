@@ -1,7 +1,6 @@
 CC=gcc
-CFLAGS=-g -Wall -Wextra -Werror -pedantic -std=gnu90
+CFLAGS=-g -Wall -Wextra -Werror -pedantic -std=gnu90 -lm
 SRC=""
 
 %:
-	$(CC) $(CFLAGS) tests/$*-*.c
-
+	$(CC) tests/$*-*.c $(CFLAGS)
